@@ -28,11 +28,140 @@ type TorrentGetResponseArguments struct {
 }
 
 type Torrent struct {
-	ID        int64         `json:"id"`
-	Labels    []interface{} `json:"labels"`
-	Name      string        `json:"name"`
-	Status    int64         `json:"status"`
-	TotalSize int64         `json:"totalSize"`
+	ActivityDate            int64         `json:"activityDate"`
+	AddedDate               int64         `json:"addedDate"`
+	Availability            []int64       `json:"availability"`
+	BandwidthPriority       int64         `json:"bandwidthPriority"`
+	Comment                 string        `json:"comment"`
+	CorruptEver             int64         `json:"corruptEver"`
+	Creator                 string        `json:"creator"`
+	DateCreated             int64         `json:"dateCreated"`
+	DesiredAvailable        int64         `json:"desiredAvailable"`
+	DoneDate                int64         `json:"doneDate"`
+	DownloadDir             string        `json:"downloadDir"`
+	DownloadLimit           int64         `json:"downloadLimit"`
+	DownloadLimited         bool          `json:"downloadLimited"`
+	DownloadedEver          int64         `json:"downloadedEver"`
+	EditDate                int64         `json:"editDate"`
+	Error                   int64         `json:"error"`
+	ErrorString             string        `json:"errorString"`
+	Eta                     int64         `json:"eta"`
+	EtaIdle                 int64         `json:"etaIdle"`
+	FileCount               int64         `json:"file-count"`
+	FileStats               []FileStat    `json:"fileStats"`
+	Files                   []File        `json:"files"`
+	Group                   string        `json:"group"`
+	HashString              string        `json:"hashString"`
+	HaveUnchecked           int64         `json:"haveUnchecked"`
+	HaveValid               int64         `json:"haveValid"`
+	HonorsSessionLimits     bool          `json:"honorsSessionLimits"`
+	ID                      int64         `json:"id"`
+	IsFinished              bool          `json:"isFinished"`
+	IsPrivate               bool          `json:"isPrivate"`
+	IsStalled               bool          `json:"isStalled"`
+	Labels                  []interface{} `json:"labels"`
+	LeftUntilDone           int64         `json:"leftUntilDone"`
+	MagnetLink              string        `json:"magnetLink"`
+	ManualAnnounceTime      int64         `json:"manualAnnounceTime"`
+	MaxConnectedPeers       int64         `json:"maxConnectedPeers"`
+	MetadataPercentComplete int64         `json:"metadataPercentComplete"`
+	Name                    string        `json:"name"`
+	PeerLimit               int64         `json:"peer-limit"`
+	Peers                   []interface{} `json:"peers"`
+	PeersConnected          int64         `json:"peersConnected"`
+	PeersFrom               PeersFrom     `json:"peersFrom"`
+	PeersGettingFromUs      int64         `json:"peersGettingFromUs"`
+	PeersSendingToUs        int64         `json:"peersSendingToUs"`
+	PercentComplete         int64         `json:"percentComplete"`
+	PercentDone             int64         `json:"percentDone"`
+	PieceCount              int64         `json:"pieceCount"`
+	PieceSize               int64         `json:"pieceSize"`
+	Pieces                  string        `json:"pieces"`
+	PrimaryMIMEType         string        `json:"primary-mime-type"`
+	Priorities              []int64       `json:"priorities"`
+	QueuePosition           int64         `json:"queuePosition"`
+	RecheckProgress         int64         `json:"recheckProgress"`
+	SecondsDownloading      int64         `json:"secondsDownloading"`
+	SecondsSeeding          int64         `json:"secondsSeeding"`
+	SeedIdleLimit           int64         `json:"seedIdleLimit"`
+	SeedIdleMode            int64         `json:"seedIdleMode"`
+	SeedRatioLimit          int64         `json:"seedRatioLimit"`
+	SeedRatioMode           int64         `json:"seedRatioMode"`
+	SizeWhenDone            int64         `json:"sizeWhenDone"`
+	StartDate               int64         `json:"startDate"`
+	Status                  int64         `json:"status"`
+	TorrentFile             string        `json:"torrentFile"`
+	TotalSize               int64         `json:"totalSize"`
+	TrackerList             string        `json:"trackerList"`
+	TrackerStats            []TrackerStat `json:"trackerStats"`
+	Trackers                []Tracker     `json:"trackers"`
+	UploadLimit             int64         `json:"uploadLimit"`
+	UploadLimited           bool          `json:"uploadLimited"`
+	UploadRatio             int64         `json:"uploadRatio"`
+	UploadedEver            int64         `json:"uploadedEver"`
+	Wanted                  []int64       `json:"wanted"`
+	Webseeds                []interface{} `json:"webseeds"`
+	WebseedsSendingToUs     int64         `json:"webseedsSendingToUs"`
+}
+
+type FileStat struct {
+	BytesCompleted int64 `json:"bytesCompleted"`
+	Priority       int64 `json:"priority"`
+	Wanted         bool  `json:"wanted"`
+}
+
+type File struct {
+	BytesCompleted int64  `json:"bytesCompleted"`
+	Length         int64  `json:"length"`
+	Name           string `json:"name"`
+}
+
+type PeersFrom struct {
+	FromCache    int64 `json:"fromCache"`
+	FromDht      int64 `json:"fromDht"`
+	FromIncoming int64 `json:"fromIncoming"`
+	FromLpd      int64 `json:"fromLpd"`
+	FromLtep     int64 `json:"fromLtep"`
+	FromPex      int64 `json:"fromPex"`
+	FromTracker  int64 `json:"fromTracker"`
+}
+
+type TrackerStat struct {
+	Announce              string `json:"announce"`
+	AnnounceState         int64  `json:"announceState"`
+	DownloadCount         int64  `json:"downloadCount"`
+	HasAnnounced          bool   `json:"hasAnnounced"`
+	HasScraped            bool   `json:"hasScraped"`
+	Host                  string `json:"host"`
+	ID                    int64  `json:"id"`
+	IsBackup              bool   `json:"isBackup"`
+	LastAnnouncePeerCount int64  `json:"lastAnnouncePeerCount"`
+	LastAnnounceResult    string `json:"lastAnnounceResult"`
+	LastAnnounceStartTime int64  `json:"lastAnnounceStartTime"`
+	LastAnnounceSucceeded bool   `json:"lastAnnounceSucceeded"`
+	LastAnnounceTime      int64  `json:"lastAnnounceTime"`
+	LastAnnounceTimedOut  bool   `json:"lastAnnounceTimedOut"`
+	LastScrapeResult      string `json:"lastScrapeResult"`
+	LastScrapeStartTime   int64  `json:"lastScrapeStartTime"`
+	LastScrapeSucceeded   bool   `json:"lastScrapeSucceeded"`
+	LastScrapeTime        int64  `json:"lastScrapeTime"`
+	LastScrapeTimedOut    bool   `json:"lastScrapeTimedOut"`
+	LeecherCount          int64  `json:"leecherCount"`
+	NextAnnounceTime      int64  `json:"nextAnnounceTime"`
+	NextScrapeTime        int64  `json:"nextScrapeTime"`
+	Scrape                string `json:"scrape"`
+	ScrapeState           int64  `json:"scrapeState"`
+	SeederCount           int64  `json:"seederCount"`
+	Sitename              string `json:"sitename"`
+	Tier                  int64  `json:"tier"`
+}
+
+type Tracker struct {
+	Announce string `json:"announce"`
+	ID       int64  `json:"id"`
+	Scrape   string `json:"scrape"`
+	Sitename string `json:"sitename"`
+	Tier     int64  `json:"tier"`
 }
 
 // Add
